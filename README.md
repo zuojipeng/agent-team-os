@@ -8,11 +8,14 @@ Use this folder as the source of truth for host-level Agent team behavior.
 
 ```text
 AGENT-TEAM-CHARTER.md
+INDEX.md
 agents/
 principles/
 workflows/
+playbooks/
 templates/
 adapters/
+prompts/
 scripts/
 ```
 
@@ -49,3 +52,15 @@ From a target project:
 ```
 
 This creates a small `AGENT-TEAM-OS.md` pointer and lightweight template folders without copying the whole system.
+
+## Validation
+
+```bash
+/Users/edy/.agents/team-os/scripts/validate.sh
+```
+
+Expected output:
+
+```text
+Agent Team OS validation passed
+```

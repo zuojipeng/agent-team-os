@@ -6,6 +6,12 @@ Use the Codex skill:
 agent-team-os
 ```
 
+Skill path:
+
+```text
+/Users/edy/.codex/skills/agent-team-os/SKILL.md
+```
+
 Trigger examples:
 
 ```text

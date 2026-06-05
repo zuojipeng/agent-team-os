@@ -37,6 +37,8 @@ Goal
   -> Retrospective
 ```
 
+For task-specific entrypoints, use `INDEX.md` to choose a workflow, playbook, role, prompt, or adapter.
+
 ## Required Gates
 
 1. Product Gate: user job, scope, non-goals, success metrics, acceptance criteria.
