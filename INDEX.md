@@ -47,10 +47,20 @@
 - `templates/ue-spec.md`
 - `templates/architecture-note.md`
 - `templates/adr.md`
+- `templates/code-review-report.md`
 - `templates/test-report.md`
 - `templates/release-runbook.md`
 - `templates/agent-run-log.md`
 - `templates/project-scorecard.md`
+
+## Operating System
+
+- `operating-system/team-governance.md`
+- `operating-system/communication-protocol.md`
+- `operating-system/supervision-matrix.md`
+- `operating-system/team-memory.md`
+- `operating-system/autonomy-loop.md`
+- `operating-system/maturity-model.md`
 
 ## Cross-Tool Adapters
 

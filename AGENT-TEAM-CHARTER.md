@@ -39,6 +39,14 @@ Goal
 
 For task-specific entrypoints, use `INDEX.md` to choose a workflow, playbook, role, prompt, or adapter.
 
+For team-level supervision, use `operating-system/`:
+- `team-governance.md`
+- `communication-protocol.md`
+- `supervision-matrix.md`
+- `team-memory.md`
+- `autonomy-loop.md`
+- `maturity-model.md`
+
 ## Required Gates
 
 1. Product Gate: user job, scope, non-goals, success metrics, acceptance criteria.

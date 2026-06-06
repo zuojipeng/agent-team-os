@@ -34,6 +34,7 @@ required_files=(
   "templates/ue-spec.md"
   "templates/architecture-note.md"
   "templates/adr.md"
+  "templates/code-review-report.md"
   "templates/test-report.md"
   "templates/release-runbook.md"
   "templates/agent-run-log.md"
@@ -50,6 +51,12 @@ required_files=(
   "prompts/client-quote-start.md"
   "scripts/install-to-project.sh"
   "scripts/new-scorecard.sh"
+  "operating-system/team-governance.md"
+  "operating-system/communication-protocol.md"
+  "operating-system/supervision-matrix.md"
+  "operating-system/team-memory.md"
+  "operating-system/autonomy-loop.md"
+  "operating-system/maturity-model.md"
 )
 
 missing=0
