@@ -64,3 +64,11 @@ Expected output:
 ```text
 Agent Team OS validation passed
 ```
+
+## Project Scorecard
+
+Create a project scorecard from the reusable template:
+
+```bash
+/Users/edy/.agents/team-os/scripts/new-scorecard.sh "Project Name" ./docs/team-os/project-scorecard.md
+```

@@ -37,6 +37,7 @@ required_files=(
   "templates/test-report.md"
   "templates/release-runbook.md"
   "templates/agent-run-log.md"
+  "templates/project-scorecard.md"
   "adapters/codex.md"
   "adapters/claude.md"
   "adapters/cursor.md"
@@ -48,6 +49,7 @@ required_files=(
   "prompts/openclaw-start.md"
   "prompts/client-quote-start.md"
   "scripts/install-to-project.sh"
+  "scripts/new-scorecard.sh"
 )
 
 missing=0

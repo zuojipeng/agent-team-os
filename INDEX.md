@@ -50,6 +50,7 @@
 - `templates/test-report.md`
 - `templates/release-runbook.md`
 - `templates/agent-run-log.md`
+- `templates/project-scorecard.md`
 
 ## Cross-Tool Adapters
 
@@ -71,3 +72,4 @@
 
 - `scripts/install-to-project.sh`
 - `scripts/validate.sh`
+- `scripts/new-scorecard.sh`

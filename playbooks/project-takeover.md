@@ -29,6 +29,7 @@ rg -n "TODO|FIXME|deploy|test|build|lint|e2e|smoke|api|route|schema|config"
 ```markdown
 # Project Takeover Report
 
+## Scorecard
 ## Product Reading
 ## UE Reading
 ## Architecture Reading
@@ -37,6 +38,8 @@ rg -n "TODO|FIXME|deploy|test|build|lint|e2e|smoke|api|route|schema|config"
 ## Risks
 ## Recommended Next Slice
 ```
+
+Use `templates/project-scorecard.md` when the user wants a reusable quality snapshot.
 
 ## Rule
 
