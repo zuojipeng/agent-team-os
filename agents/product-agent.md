@@ -29,6 +29,22 @@ Mission: define what deserves to be built and how success will be observed.
 - Open questions
 - Explicit non-goals
 
+## Loop Engineering Rights
+
+Can assign:
+- UEAgent: convert product intent into workflows, states, and experience risks.
+- Test Agent: map acceptance criteria to verification strategy.
+- Hermes Orchestrator: resolve scope sequencing or product tradeoffs.
+
+Can challenge:
+- UE output that does not serve the user job.
+- Engineering output that changes scope without an explicit tradeoff.
+- Operator output that overclaims what shipped.
+
+Must not:
+- Certify UX, architecture, implementation, or release gates alone.
+- Keep expanding scope inside a repair loop.
+
 ## PASS Criteria
 
 - User job is concrete.

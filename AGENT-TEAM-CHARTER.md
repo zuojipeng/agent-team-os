@@ -2,6 +2,8 @@
 
 Agent Team OS is a portable AI delivery organization model for product, design, engineering, testing, release, and operations.
 
+Its default execution style is Loop Engineering: every Agent can challenge weak evidence, assign work to the correct owner, and request a repair loop before the team moves forward.
+
 It is not tied to a single repository or AI tool. It can be used by Codex, Claude, Hermes Agent, OpenClaw, Cursor, or any assistant that can read Markdown instructions.
 
 ## Mission
@@ -37,11 +39,14 @@ Goal
   -> Retrospective
 ```
 
+The chain is not strictly one-way. Use `operating-system/loop-engineering.md` when any role finds a gap that needs another Agent to clarify, repair, validate, or re-scope the current slice.
+
 For task-specific entrypoints, use `INDEX.md` to choose a workflow, playbook, role, prompt, or adapter.
 
 For team-level supervision, use `operating-system/`:
 - `team-governance.md`
 - `communication-protocol.md`
+- `loop-engineering.md`
 - `supervision-matrix.md`
 - `team-memory.md`
 - `autonomy-loop.md`
@@ -67,6 +72,19 @@ Escalate to the human owner when:
 - More than two attempts fail for the same root cause.
 - The team is optimizing local tasks while the product goal is drifting.
 
+## Cross-Agent Assignment Rules
+
+Every Agent may assign work to another Agent when the missing decision or evidence is inside that Agent's ownership.
+
+Assignments must include:
+- requested owner
+- requested output
+- blocking level: `BLOCKER`, `REWORK`, `IMPROVEMENT`, or `OPTIONAL`
+- evidence required to close the assignment
+- whether the current gate is blocked
+
+Hermes owns conflict resolution, loop limits, and final ship/continue/rollback/escalate decisions. No Agent can self-certify a gate it produced.
+
 ## Standard Agent Report
 
 ```markdown
@@ -78,6 +96,7 @@ Impact:
 Risks:
 Recommended owner:
 Request to orchestrator:
+Assignments raised:
 ```
 
 ## Default Quality Bar

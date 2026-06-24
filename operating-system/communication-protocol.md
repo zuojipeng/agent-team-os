@@ -14,6 +14,7 @@ Evidence:
 Risks:
 Requested next owner:
 Request to Hermes:
+Assignments raised:
 ```
 
 ## Handoff Message
@@ -28,6 +29,22 @@ Evidence:
 Deadline / urgency:
 ```
 
+## Assignment Message
+
+Use this when one Agent assigns work to another Agent during a loop.
+
+```markdown
+Assignment ID:
+From:
+To:
+Blocking level: BLOCKER / REWORK / IMPROVEMENT / OPTIONAL
+Request:
+Reason:
+Evidence required:
+Current gate blocked: yes / no
+Due loop:
+```
+
 ## Failure Message
 
 ```markdown
@@ -39,6 +56,7 @@ Reproduction / evidence:
 Impact:
 Likely owner:
 Recommended fix path:
+Assignment ID:
 ```
 
 ## Review Message
@@ -61,3 +79,5 @@ Decision: PASS / BLOCK
 - Do not hide blockers inside progress updates.
 - Do not mark PASS without validation evidence.
 - Do not ask the human owner for decisions that an Agent role can make.
+- Do not create assignments without a single named owner and close condition.
+- Do not keep looping after the same root cause fails twice; reduce scope, change owner, investigate separately, or escalate.

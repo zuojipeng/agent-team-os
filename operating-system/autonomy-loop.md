@@ -2,6 +2,8 @@
 
 This is the loop that lets the Agent team keep improving without becoming chaotic.
 
+For cross-Agent assignment, challenge, and repair-loop mechanics, use `loop-engineering.md`. This file defines when the team may keep moving without human intervention.
+
 ## Loop
 
 ```text
@@ -44,7 +46,7 @@ Prefer 30-90 minute slices:
 ## Stop Conditions
 
 Stop and escalate when:
-- same blocker appears twice
+- same root-cause blocker appears twice
 - validation environment is unavailable
 - the task requires credentials or payment
 - tests contradict the claimed success

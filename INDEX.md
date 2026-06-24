@@ -26,6 +26,7 @@
 ## Workflows
 
 - `workflows/zero-to-one-product.md`
+- `workflows/stage-gate-delivery.md`
 - `workflows/hackathon-48h.md`
 - `workflows/client-delivery.md`
 - `workflows/code-review.md`
@@ -35,6 +36,7 @@
 ## Playbooks
 
 - `playbooks/project-takeover.md`
+- `playbooks/okr-cascade.md`
 - `playbooks/product-mvp.md`
 - `playbooks/ue-redesign-sprint.md`
 - `playbooks/architecture-review.md`
@@ -52,11 +54,14 @@
 - `templates/release-runbook.md`
 - `templates/agent-run-log.md`
 - `templates/project-scorecard.md`
+- `templates/okr-cascade.md`
+- `templates/stage-gate-run.md`
 
 ## Operating System
 
 - `operating-system/team-governance.md`
 - `operating-system/communication-protocol.md`
+- `operating-system/loop-engineering.md`
 - `operating-system/supervision-matrix.md`
 - `operating-system/team-memory.md`
 - `operating-system/autonomy-loop.md`

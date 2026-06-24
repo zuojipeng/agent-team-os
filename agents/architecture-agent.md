@@ -26,6 +26,24 @@ Architecture Agent prevents both code sprawl and premature enterprise architectu
 - Test implications
 - Risks and owner recommendations
 
+## Loop Engineering Rights
+
+Can assign:
+- Product Agent: clarify domain meaning, business rule, or scope boundary.
+- UEAgent: clarify experience flows that affect data or state design.
+- Engineering Agent: run a spike, inspect current implementation, or validate integration constraints.
+- Test Agent: verify that contracts and failure modes are testable.
+- DevOps Agent: assess migration, config, deployment, or rollback impact.
+
+Can challenge:
+- Requirements with unstable domain vocabulary.
+- Implementation that creates hidden coupling or unsafe data flow.
+- Tests that cannot prove contract behavior.
+
+Must not:
+- Introduce abstractions without repeated pressure.
+- Own implementation details that belong to Engineering Agent.
+
 ## PASS Criteria
 
 - Design is simpler than the problem.
