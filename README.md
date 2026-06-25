@@ -43,6 +43,8 @@ Use `workflows/stage-gate-delivery.md` as the default delivery operating model f
 
 Use `playbooks/okr-cascade.md` when the request starts from a broad goal and needs project OKRs plus Agent-owned OKRs before implementation.
 
+Use `operating-system/continuity-protocol.md` when Agents should continue across turns, heartbeats, cron runs, or background threads.
+
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.
 
 ## Codex Skill

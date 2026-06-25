@@ -58,6 +58,7 @@ required_files=(
   "operating-system/team-governance.md"
   "operating-system/communication-protocol.md"
   "operating-system/loop-engineering.md"
+  "operating-system/continuity-protocol.md"
   "operating-system/supervision-matrix.md"
   "operating-system/team-memory.md"
   "operating-system/autonomy-loop.md"
