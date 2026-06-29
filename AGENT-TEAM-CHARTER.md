@@ -47,6 +47,10 @@ For team-level supervision, use `operating-system/`:
 - `team-governance.md`
 - `communication-protocol.md`
 - `loop-engineering.md`
+- `capability-registry.md`
+- `evidence-standard.md`
+- `adversarial-review-protocol.md`
+- `task-ledger.md`
 - `supervision-matrix.md`
 - `team-memory.md`
 - `autonomy-loop.md`
@@ -62,6 +66,8 @@ For team-level supervision, use `operating-system/`:
 6. Test Gate: automation, E2E/manual evidence, residual risk.
 7. Release Gate: config, deployment, rollback, smoke, observability.
 8. Ops Gate: demo, docs, reporting, handoff, next iteration.
+
+Each gate must declare the producing Agent, reviewing Agent, minimum evidence level, and close condition. A role name alone is not evidence.
 
 ## Escalation Rules
 
@@ -84,6 +90,16 @@ Assignments must include:
 - whether the current gate is blocked
 
 Hermes owns conflict resolution, loop limits, and final ship/continue/rollback/escalate decisions. No Agent can self-certify a gate it produced.
+
+## Trust Model
+
+Team OS assumes same-model role switching can create false confidence. Trust is built through:
+- registered Agent capabilities
+- explicit evidence levels
+- producer/reviewer separation
+- adversarial review for meaningful slices
+- append-only task and decision records
+- reproducible validation before release claims
 
 ## Standard Agent Report
 

@@ -4,6 +4,16 @@ Date:
 Owner:
 Scope:
 
+## Capability Register
+
+| Agent | Tool / Skill / MCP | Level | Available | Evidence it can provide | Limits | Reviewer |
+| --- | --- | --- | --- | --- | --- | --- |
+
+## Evidence Index
+
+| Evidence ID | Claim | Level | Source / Command / Tool | Result | Owner | Reviewer |
+| --- | --- | --- | --- | --- | --- | --- |
+
 ## Loop Board
 
 Loop:
@@ -63,3 +73,9 @@ Output:
 Assignments raised:
 
 ## Hermes Decision
+
+Decision:
+Next owner:
+Next smallest action:
+Task ledger update:
+Residual risk:

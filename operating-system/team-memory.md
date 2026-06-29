@@ -8,6 +8,7 @@ Agent Team OS improves only if lessons become reusable memory.
 | --- | --- | --- |
 | Project scorecards | target project `docs/team-os/` | project health snapshots |
 | Agent run logs | target project `docs/agent-runs/` | per-slice execution evidence |
+| Task ledgers | target project `docs/team-os/task-ledger.md` | durable tasks, assignments, reviews, evidence, and progress |
 | Test reports | target project `docs/test-reports/` | validation evidence |
 | ADRs | target project `docs/adr/` | durable architecture decisions |
 | Reusable principles | Team OS `principles/` | cross-project standards |
@@ -39,3 +40,5 @@ After every meaningful slice:
 - Do not keep stale rules that no longer affect decisions.
 - Prefer small reusable templates over long essays.
 - Version Team OS changes with git commits.
+- Keep ledgers compact. Preserve decisions and evidence, not raw chat noise.
+- Never store secrets, tokens, or private production data in Team OS memory.

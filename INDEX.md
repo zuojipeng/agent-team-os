@@ -56,6 +56,7 @@
 - `templates/project-scorecard.md`
 - `templates/okr-cascade.md`
 - `templates/stage-gate-run.md`
+- `templates/task-ledger.md`
 
 ## Operating System
 
@@ -63,6 +64,10 @@
 - `operating-system/communication-protocol.md`
 - `operating-system/loop-engineering.md`
 - `operating-system/continuity-protocol.md`
+- `operating-system/capability-registry.md`
+- `operating-system/evidence-standard.md`
+- `operating-system/adversarial-review-protocol.md`
+- `operating-system/task-ledger.md`
 - `operating-system/supervision-matrix.md`
 - `operating-system/team-memory.md`
 - `operating-system/autonomy-loop.md`

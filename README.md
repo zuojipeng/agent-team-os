@@ -28,10 +28,11 @@ For any AI tool:
 
 1. Read `AGENT-TEAM-CHARTER.md`.
 2. Read `operating-system/loop-engineering.md` for assignment and repair-loop rules.
-3. Read the workflow that matches the task.
-4. Read only the relevant Agent role files.
-5. Use templates for deliverables.
-6. Keep project-specific artifacts inside the target project; keep reusable rules here.
+3. Read `operating-system/capability-registry.md`, `operating-system/evidence-standard.md`, and `operating-system/adversarial-review-protocol.md` when the work changes product behavior, UI, architecture, code, tests, or release state.
+4. Read the workflow that matches the task.
+5. Read only the relevant Agent role files.
+6. Use templates for deliverables and `templates/task-ledger.md` for durable work tracking.
+7. Keep project-specific artifacts inside the target project; keep reusable rules here.
 
 ## Delivery Modes
 
@@ -44,6 +45,8 @@ Use `workflows/stage-gate-delivery.md` as the default delivery operating model f
 Use `playbooks/okr-cascade.md` when the request starts from a broad goal and needs project OKRs plus Agent-owned OKRs before implementation.
 
 Use `operating-system/continuity-protocol.md` when Agents should continue across turns, heartbeats, cron runs, or background threads.
+
+Use `operating-system/task-ledger.md` when task state, Agent communication, reviews, evidence, and progress must survive tool switches or long-running delivery.
 
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.
 
