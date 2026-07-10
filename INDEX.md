@@ -61,6 +61,11 @@
 - `templates/task-ledger.md`
 - `templates/hackathon-opportunity-brief.md`
 
+## Schemas And Examples
+
+- `schemas/hackathon-opportunity.schema.json`
+- `examples/opportunities/sample-opportunity.json`
+
 ## Operating System
 
 - `operating-system/team-governance.md`
@@ -98,3 +103,4 @@
 - `scripts/install-to-project.sh`
 - `scripts/validate.sh`
 - `scripts/new-scorecard.sh`
+- `scripts/validate-opportunity.mjs`

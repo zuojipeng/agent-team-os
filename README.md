@@ -50,6 +50,12 @@ Use `operating-system/task-ledger.md` when task state, Agent communication, revi
 
 Use `workflows/global-hackathon-autopilot.md` and `operating-system/opportunity-engine.md` when the team should discover, rank, prepare, and execute global competitions under explicit human authorization gates.
 
+Validate a normalized opportunity record before shortlist review:
+
+```bash
+node scripts/validate-opportunity.mjs examples/opportunities/sample-opportunity.json
+```
+
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.
 
 ## Codex Skill

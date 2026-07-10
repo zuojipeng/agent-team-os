@@ -47,25 +47,25 @@ official_url: https://...
 organizer: string
 status: discovered | verified | shortlisted | approved | rejected | active | submitted | closed
 discovered_at: ISO-8601
-verified_at: ISO-8601
-registration_deadline_utc: ISO-8601 | unknown
-submission_deadline_utc: ISO-8601 | unknown
+verified_at: ISO-8601 | null
+registration_deadline_utc: ISO-8601 | null
+submission_deadline_utc: ISO-8601 | null
 mode: online | in_person | hybrid
 location: string | null
 languages: [string]
 eligibility: [string]
-team_size: { min: number, max: number }
+team_size: { min: number, max: number } | null
 tracks: [string]
 required_technology: [string]
 allowed_preexisting_work: yes | no | partial | unknown
 deliverables: [repository, demo_url, video, slides, form]
 ip_and_license_summary: string
 prize_and_network_value: string
-estimated_cost: number | unknown
-estimated_team_hours: number | unknown
+estimated_cost: number | null
+estimated_team_hours: number | null
 fit_assets: [string]
 hard_filter: pass | fail | needs_review
-score: number
+score: number | null
 confidence: low | medium | high
 evidence: [url-or-artifact]
 human_gates: [string]
@@ -153,6 +153,13 @@ Use the opportunity template, official sources, weighted score, and human gates 
 ### M2: Local Opportunity CLI
 
 Add a canonical JSON schema, source adapters, deduplication, UTC deadline alerts, and Markdown brief generation. Keep account actions out of the CLI.
+
+Current foundation:
+- `schemas/hackathon-opportunity.schema.json`
+- `scripts/validate-opportunity.mjs`
+- `tests/validate-opportunity.test.mjs`
+
+The validator must pass before an imported record enters hard-filter or score review.
 
 ### M3: Campaign Workspace Generator
 
