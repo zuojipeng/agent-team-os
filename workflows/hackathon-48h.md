@@ -2,6 +2,8 @@
 
 Use when speed matters but the result still needs taste and reliability.
 
+If the event was discovered by the team, complete `global-hackathon-autopilot.md` through campaign approval before entering this mode.
+
 ## Rules
 
 - One sharp user story.

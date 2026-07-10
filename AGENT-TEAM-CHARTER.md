@@ -39,6 +39,8 @@ Goal
   -> Retrospective
 ```
 
+Opportunity Scout Agent is an intake role for hackathons, grants, competitions, and other external opportunities. It feeds verified opportunity briefs to Hermes and Product Agent, but it does not bypass the default delivery chain or human authority for registration, terms, spend, identity, publication, or submission.
+
 The chain is not strictly one-way. Use `operating-system/loop-engineering.md` when any role finds a gap that needs another Agent to clarify, repair, validate, or re-scope the current slice.
 
 For task-specific entrypoints, use `INDEX.md` to choose a workflow, playbook, role, prompt, or adapter.

@@ -37,6 +37,7 @@ Capability level does not equal trust. Trust still requires evidence and indepen
 | Test Agent | unit/integration/E2E tools, smoke scripts, browser automation, test matrix | mapped tests, commands, failure reproduction, residual risk | product direction, implementation design |
 | DevOps Agent | CI/CD, cloud CLI, env/config docs, logs, smoke, rollback scripts | deploy plan, config list, smoke, rollback, observability | product value, code quality |
 | Operator Agent | README, release notes, demo scripts, recordings, handoff templates | demo path, release notes, support notes, next actions | unresolved defects, release gate |
+| Opportunity Scout Agent | official event sources, web/browser research, calendars, normalization and scoring tools | verified opportunity brief, deadline record, hard-filter result, ranked shortlist | participation, registration, legal/identity terms, spend, submission |
 
 ## Capability Registration Format
 

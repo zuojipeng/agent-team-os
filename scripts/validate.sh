@@ -14,6 +14,7 @@ required_files=(
   "agents/test-agent.md"
   "agents/devops-agent.md"
   "agents/operator-agent.md"
+  "agents/opportunity-scout-agent.md"
   "principles/product-taste.md"
   "principles/ue-taste.md"
   "principles/software-design.md"
@@ -21,6 +22,7 @@ required_files=(
   "workflows/zero-to-one-product.md"
   "workflows/stage-gate-delivery.md"
   "workflows/hackathon-48h.md"
+  "workflows/global-hackathon-autopilot.md"
   "workflows/client-delivery.md"
   "workflows/code-review.md"
   "workflows/ui-redesign.md"
@@ -44,6 +46,7 @@ required_files=(
   "templates/okr-cascade.md"
   "templates/stage-gate-run.md"
   "templates/task-ledger.md"
+  "templates/hackathon-opportunity-brief.md"
   "adapters/codex.md"
   "adapters/claude.md"
   "adapters/cursor.md"
@@ -68,6 +71,7 @@ required_files=(
   "operating-system/team-memory.md"
   "operating-system/autonomy-loop.md"
   "operating-system/maturity-model.md"
+  "operating-system/opportunity-engine.md"
 )
 
 missing=0

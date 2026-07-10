@@ -14,6 +14,7 @@ In Loop Engineering mode, reviewers do not only approve or reject. They can open
 | Test Agent | Hermes + Engineering Agent | coverage, reproduction, confidence | Test Agent or Engineering Agent |
 | DevOps Agent | Test Agent + Hermes | deploy, config, smoke, rollback | DevOps Agent |
 | Operator Agent | Product Agent + Hermes | demo truthfulness, handoff quality | Operator Agent |
+| Opportunity Scout Agent | Product Agent + Operator Agent + Hermes | source freshness, eligibility, rules, fit, deadline, scoring | Opportunity Scout Agent or Human Owner |
 
 ## Cross-Agent Challenge Rights
 
@@ -37,6 +38,7 @@ Any Agent may challenge another role when:
 | Test Agent | Product Agent for untestable criteria; Engineering Agent for defects; UEAgent for behavior/state gaps; DevOps Agent for environment issues |
 | DevOps Agent | Engineering Agent for build/config fixes; Test Agent for smoke coverage; Product Agent for release scope; Operator Agent for communication |
 | Operator Agent | Product Agent for messaging accuracy; DevOps Agent for release notes; Test Agent for demo evidence; Hermes for next iteration |
+| Opportunity Scout Agent | Product Agent for strategic fit; Architecture Agent for sponsor feasibility; DevOps Agent for cost/environment; Operator Agent for logistics; Hermes for portfolio selection |
 
 ## Hermes Responsibilities
 

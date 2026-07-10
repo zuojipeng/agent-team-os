@@ -48,6 +48,8 @@ Use `operating-system/continuity-protocol.md` when Agents should continue across
 
 Use `operating-system/task-ledger.md` when task state, Agent communication, reviews, evidence, and progress must survive tool switches or long-running delivery.
 
+Use `workflows/global-hackathon-autopilot.md` and `operating-system/opportunity-engine.md` when the team should discover, rank, prepare, and execute global competitions under explicit human authorization gates.
+
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.
 
 ## Codex Skill

@@ -58,3 +58,15 @@ Traits:
 
 Risk:
 - methodology can become stale without real project pressure
+
+## Level 6: Opportunity-Driven Organization
+
+Traits:
+- continuously discovers and verifies external opportunities
+- selects campaigns against product strategy, capacity, and evidence
+- prepares and executes approved campaigns across tool runtimes
+- keeps account, identity, cost, legal, publication, and submission decisions behind explicit human gates
+- calibrates future decisions from competition outcomes and retained product value
+
+Risk:
+- activity can optimize for contests instead of durable products unless portfolio and post-event retention metrics remain visible
