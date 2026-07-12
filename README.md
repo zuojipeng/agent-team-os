@@ -70,6 +70,14 @@ node scripts/discover-devpost-events.mjs --limit=10
 
 The result is a candidate index, not proof of deadline, eligibility, rules, or participation approval.
 
+Build a reviewable evidence draft from one Devpost event homepage and rules page:
+
+```bash
+node scripts/build-devpost-rule-evidence.mjs --url=https://event.devpost.com/
+```
+
+This command preserves official excerpts and machine-readable event facts, but it deliberately leaves opportunity verification and participation approval unresolved.
+
 The importer does not verify rules or authorize participation. It keeps unknown fields unresolved for Scout and human review.
 
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.
