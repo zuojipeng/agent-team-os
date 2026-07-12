@@ -1,0 +1,30 @@
+{
+  "hackathons": [
+    {
+      "id": 29541,
+      "title": "Build with Gemini XPRIZE",
+      "url": "https://xprize.devpost.com/?ref=listing"
+    },
+    {
+      "id": 29542,
+      "title": "Duplicate campaign URL",
+      "url": "https://xprize.devpost.com/rules#eligibility"
+    },
+    {
+      "id": 29543,
+      "title": "API + Cloud + AI Hackathon",
+      "url": "https://api-cloud-ai-hackathon-2026.devpost.com/"
+    },
+    {
+      "id": 29544,
+      "title": "Not an event",
+      "url": "https://secure.devpost.com/users/login"
+    },
+    {
+      "id": 29545,
+      "title": "External URL",
+      "url": "https://example.com/hackathon"
+    }
+  ],
+  "meta": { "total_count": 5 }
+}

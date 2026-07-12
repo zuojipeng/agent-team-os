@@ -158,12 +158,14 @@ Current foundation:
 - `schemas/hackathon-opportunity.schema.json`
 - `scripts/validate-opportunity.mjs`
 - `scripts/import-official-event.mjs`
+- `scripts/discover-devpost-events.mjs`
 - `tests/validate-opportunity.test.mjs`
 - `tests/import-official-event.test.mjs`
+- `tests/discover-devpost-events.test.mjs`
 
 The validator must pass before an imported record enters hard-filter or score review.
 
-The first importer accepts one known official event page and emits only low-confidence discovery metadata. Listing scans and rule verification remain separate adapters.
+The Devpost listing adapter reads one bounded page from the official public JSON endpoint, emits a candidate index, and deduplicates canonical event roots. It does not claim that candidates are verified opportunities. The page importer remains a separate step and emits only low-confidence discovery metadata; rule verification is still a distinct adapter and gate.
 
 ### M3: Campaign Workspace Generator
 

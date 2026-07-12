@@ -62,6 +62,14 @@ Import a known official event page as an unverified opportunity record:
 node scripts/import-official-event.mjs --url=https://official.example/event
 ```
 
+Discover and canonicalize candidates from one bounded Devpost listing page:
+
+```bash
+node scripts/discover-devpost-events.mjs --limit=10
+```
+
+The result is a candidate index, not proof of deadline, eligibility, rules, or participation approval.
+
 The importer does not verify rules or authorize participation. It keeps unknown fields unresolved for Scout and human review.
 
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.

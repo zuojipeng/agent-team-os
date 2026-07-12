@@ -105,3 +105,4 @@
 - `scripts/new-scorecard.sh`
 - `scripts/validate-opportunity.mjs`
 - `scripts/import-official-event.mjs`
+- `scripts/discover-devpost-events.mjs`
