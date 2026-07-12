@@ -10,7 +10,7 @@ const ALLOWED_FIELDS = new Set(Object.keys(schema.properties));
 const ENUMS = Object.fromEntries(
   ['status', 'mode', 'allowed_preexisting_work', 'hard_filter', 'confidence'].map((field) => [
     field,
-    schema.properties[field].enum,
+    schema.properties[field].enum ?? schema.properties[field].oneOf.find((option) => option.enum)?.enum,
   ]),
 );
 const STRING_ARRAY_FIELDS = [
@@ -61,6 +61,7 @@ export function validateOpportunity(value) {
   if (!isHttpUrl(value.official_url)) errors.push('official_url must be an HTTP(S) URL');
 
   for (const [field, allowed] of Object.entries(ENUMS)) {
+    if (field === 'mode' && value[field] === null) continue;
     if (!allowed.includes(value[field])) errors.push(`${field} must be one of: ${allowed.join(', ')}`);
   }
 
@@ -72,6 +73,9 @@ export function validateOpportunity(value) {
   }
   if (value.status !== 'discovered' && !isIsoDateTime(value.verified_at)) {
     errors.push(`${value.status} opportunities require verified_at`);
+  }
+  if (value.status !== 'discovered' && value.mode === null) {
+    errors.push(`${value.status} opportunities require mode`);
   }
 
   for (const field of ['registration_deadline_utc', 'submission_deadline_utc']) {

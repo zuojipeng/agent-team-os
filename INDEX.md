@@ -104,3 +104,4 @@
 - `scripts/validate.sh`
 - `scripts/new-scorecard.sh`
 - `scripts/validate-opportunity.mjs`
+- `scripts/import-official-event.mjs`

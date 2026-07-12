@@ -52,6 +52,7 @@ test('accepts an unverified discovered opportunity with a null verification time
       ...validOpportunity,
       status: 'discovered',
       verified_at: null,
+      mode: null,
       hard_filter: 'needs_review',
       score: null,
     }),

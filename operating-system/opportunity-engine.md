@@ -50,7 +50,7 @@ discovered_at: ISO-8601
 verified_at: ISO-8601 | null
 registration_deadline_utc: ISO-8601 | null
 submission_deadline_utc: ISO-8601 | null
-mode: online | in_person | hybrid
+mode: online | in_person | hybrid | null
 location: string | null
 languages: [string]
 eligibility: [string]
@@ -157,9 +157,13 @@ Add a canonical JSON schema, source adapters, deduplication, UTC deadline alerts
 Current foundation:
 - `schemas/hackathon-opportunity.schema.json`
 - `scripts/validate-opportunity.mjs`
+- `scripts/import-official-event.mjs`
 - `tests/validate-opportunity.test.mjs`
+- `tests/import-official-event.test.mjs`
 
 The validator must pass before an imported record enters hard-filter or score review.
+
+The first importer accepts one known official event page and emits only low-confidence discovery metadata. Listing scans and rule verification remain separate adapters.
 
 ### M3: Campaign Workspace Generator
 

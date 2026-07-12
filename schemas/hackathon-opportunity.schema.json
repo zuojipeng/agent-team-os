@@ -54,7 +54,9 @@
     "submission_deadline_utc": {
       "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
     },
-    "mode": { "enum": ["online", "in_person", "hybrid"] },
+    "mode": {
+      "oneOf": [{ "enum": ["online", "in_person", "hybrid"] }, { "type": "null" }]
+    },
     "location": { "type": ["string", "null"] },
     "languages": { "$ref": "#/$defs/stringArray" },
     "eligibility": { "$ref": "#/$defs/stringArray" },
