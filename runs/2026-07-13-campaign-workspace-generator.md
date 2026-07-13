@@ -46,3 +46,19 @@ Decision: PASS because unresolved eligibility or pending Human Gate A determinis
 ## Next Owner
 
 Operator Agent and human owner close eligibility and participation decisions. Engineering Agents may continue only within the embedded zero-spend evaluation authorization.
+
+## Loop 2: Approved Campaign Refresh
+
+Decision: SHIP
+
+- Added guarded `--refresh` support that requires the existing generated schema and matching opportunity id.
+- Preserved original `created_at` and added `refreshed_at` instead of rewriting campaign history.
+- Promoted approved Human Gate A into `campaign` mode and checked it in the submission checklist.
+- Kept registration/terms blocked because their account-bound gate remains pending.
+- Added negative coverage for cross-opportunity refresh and regression coverage for pending participation.
+
+Evidence: E3 `node --test tests/*.test.mjs` PASS, 5 test files; E3 `scripts/validate.sh` PASS; E4 live guarded refresh returned `mode=campaign files=6` in the Jingci campaign workspace.
+
+Adversarial review: strongest rejection reason was that a refresh could erase audit history or imply registration authority. Both are closed by timestamp preservation, same-opportunity validation, explicit authorization fields, and the still-blocked registration gate.
+
+Next owner: Jingci Product Agent + Architecture Agent + UEAgent continue the approved product slice. Operator Agent and human owner retain all account-bound gates.

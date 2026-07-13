@@ -88,6 +88,12 @@ node scripts/create-campaign-workspace.mjs \
 
 Unresolved critical fields or a pending participation gate always produce `evaluation` mode. Only fully accepted critical evidence plus Human Gate A approval can produce `campaign` mode.
 
+After a reviewed decision changes, refresh only the same generated opportunity workspace:
+
+```bash
+node scripts/create-campaign-workspace.mjs --decision=review.json --out=campaign-dir --refresh
+```
+
 The importer does not verify rules or authorize participation. It keeps unknown fields unresolved for Scout and human review.
 
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.

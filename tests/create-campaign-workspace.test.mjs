@@ -22,6 +22,7 @@ test('validates the checked-in review decision', async () => {
 
 test('keeps unresolved or unapproved opportunities in evaluation mode', async () => {
   const decision = await fixture();
+  decision.human_gates.participation = 'pending';
   assert.equal(deriveWorkspaceMode(decision), 'evaluation');
   const parent = await mkdtemp(join(tmpdir(), 'team-os-campaign-'));
   const output = join(parent, 'backblaze');
@@ -40,9 +41,47 @@ test('keeps unresolved or unapproved opportunities in evaluation mode', async ()
 
 test('requires all critical reviews and participation approval for campaign mode', async () => {
   const decision = await fixture();
-  decision.field_decisions.eligibility.status = 'accepted';
-  decision.human_gates.participation = 'approved';
   assert.equal(deriveWorkspaceMode(decision), 'campaign');
+});
+
+test('safely refreshes the same workspace while keeping registration terms blocked', async () => {
+  const decision = await fixture();
+  decision.human_gates.participation = 'pending';
+  const parent = await mkdtemp(join(tmpdir(), 'team-os-refresh-'));
+  const output = join(parent, 'backblaze');
+  try {
+    await createCampaignWorkspace(decision, output);
+    const originalMetadata = JSON.parse(await readFile(join(output, 'campaign.json'), 'utf8'));
+    decision.human_gates.participation = 'approved';
+    await createCampaignWorkspace(decision, output, { refresh: true });
+    const metadata = JSON.parse(await readFile(join(output, 'campaign.json'), 'utf8'));
+    const ledger = await readFile(join(output, 'docs', 'task-ledger.md'), 'utf8');
+    const checklist = await readFile(join(output, 'docs', 'submission-checklist.md'), 'utf8');
+    assert.equal(metadata.mode, 'campaign');
+    assert.equal(metadata.created_at, originalMetadata.created_at);
+    assert.equal(typeof metadata.refreshed_at, 'string');
+    assert.match(ledger, /Close registration and terms gate.*blocked/);
+    assert.match(checklist, /- \[x\] Human Gate A participation approval/);
+    assert.match(checklist, /- \[ \] Registration and terms completed/);
+  } finally {
+    await rm(parent, { recursive: true, force: true });
+  }
+});
+
+test('refuses to refresh a workspace for another opportunity', async () => {
+  const decision = await fixture();
+  const parent = await mkdtemp(join(tmpdir(), 'team-os-refresh-refusal-'));
+  const output = join(parent, 'backblaze');
+  try {
+    await createCampaignWorkspace(decision, output);
+    decision.opportunity_id = 'different-opportunity';
+    await assert.rejects(
+      createCampaignWorkspace(decision, output, { refresh: true }),
+      /belongs to a different opportunity/,
+    );
+  } finally {
+    await rm(parent, { recursive: true, force: true });
+  }
 });
 
 test('rejects incomplete authorization and missing official evidence', async () => {

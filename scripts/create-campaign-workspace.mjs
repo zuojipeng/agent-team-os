@@ -108,12 +108,34 @@ function fieldTable(decision) {
   }).join('\n');
 }
 
-export async function createCampaignWorkspace(decision, outputDirectory) {
+async function prepareOutputDirectory(decision, outputDirectory, refresh) {
+  if (!refresh) {
+    await mkdir(outputDirectory, { recursive: false });
+    await mkdir(join(outputDirectory, 'docs'));
+    return null;
+  }
+  let current;
+  try {
+    current = JSON.parse(await readFile(join(outputDirectory, 'campaign.json'), 'utf8'));
+  } catch {
+    throw new Error('refresh requires an existing generated campaign.json');
+  }
+  if (
+    current.schema_version !== 'team-os.campaign-workspace.v1'
+    || current.opportunity_id !== decision.opportunity_id
+  ) {
+    throw new Error('refresh refused: existing workspace belongs to a different opportunity');
+  }
+  await mkdir(join(outputDirectory, 'docs'), { recursive: true });
+  return current;
+}
+
+export async function createCampaignWorkspace(decision, outputDirectory, { refresh = false } = {}) {
   const errors = validateReviewDecision(decision);
   if (errors.length) throw new Error(`invalid review decision: ${errors.join('; ')}`);
   const mode = deriveWorkspaceMode(decision);
-  await mkdir(outputDirectory, { recursive: false });
-  await mkdir(join(outputDirectory, 'docs'));
+  const current = await prepareOutputDirectory(decision, outputDirectory, refresh);
+  const generatedAt = new Date().toISOString();
 
   const metadata = {
     schema_version: 'team-os.campaign-workspace.v1',
@@ -122,7 +144,8 @@ export async function createCampaignWorkspace(decision, outputDirectory) {
     title: decision.title,
     official_url: decision.official_url,
     recommendation: decision.recommendation,
-    created_at: new Date().toISOString(),
+    created_at: current?.created_at ?? generatedAt,
+    ...(current ? { refreshed_at: generatedAt } : {}),
     human_gates: decision.human_gates,
     authorization: decision.authorization,
     source_review: 'review-decision.json',
@@ -131,8 +154,10 @@ export async function createCampaignWorkspace(decision, outputDirectory) {
     ? 'This workspace may evaluate feasibility only. It does not authorize registration, terms acceptance, spend, publication, or submission.'
     : 'Participation was approved. Every account-bound or public action must still follow the recorded authorization envelope and remaining human gates.'}\n\nNext action: ${decision.next_action}\n`;
   const rules = `# Rules Review\n\nProducer: ${decision.producer}\nReviewer: ${decision.reviewer}\nReviewed: ${decision.reviewed_at}\n\n| Field | Decision | Note | Evidence |\n| --- | --- | --- | --- |\n${fieldTable(decision)}\n`;
-  const ledger = `# Campaign Task Ledger\n\nOpportunity: ${decision.opportunity_id}\nMode: ${mode}\nStatus: ${mode === 'campaign' ? 'ready' : 'in_review'}\n\n## Active Tasks\n\n| ID | Owner | Reviewer | Task | Close Condition | Status |\n| --- | --- | --- | --- | --- | --- |\n| C-001 | Product Agent | Hermes | Confirm judging thesis and acceptance criteria | Product Gate evidence exists | ready |\n| C-002 | Architecture Agent | Code Review Agent | Validate required technology boundary | Reproducible spike evidence exists | ${mode === 'campaign' ? 'ready' : 'in_progress'} |\n| C-003 | Operator Agent | Human owner | Close unresolved eligibility and terms | Human decision recorded | ${mode === 'campaign' ? 'done' : 'blocked'} |\n`;
-  const checklist = `# Submission Checklist\n\n- [ ] Human Gate A participation approval\n- [ ] Registration and terms completed by authorized human\n- [ ] Rules snapshot refreshed\n- [ ] Pre-existing work disclosure reviewed\n- [ ] Working application URL verified\n- [ ] Repository access and README verified\n- [ ] Demo video under event limit\n- [ ] Provider/model disclosures complete\n- [ ] E2E and fallback demo evidence complete\n- [ ] Human Gate B final submission approval\n- [ ] Platform confirmation captured before status becomes SUBMITTED\n`;
+  const registrationTermsClosed = decision.human_gates.registration_terms === 'approved';
+  const ledger = `# Campaign Task Ledger\n\nOpportunity: ${decision.opportunity_id}\nMode: ${mode}\nStatus: ${mode === 'campaign' ? 'ready' : 'in_review'}\n\n## Active Tasks\n\n| ID | Owner | Reviewer | Task | Close Condition | Status |\n| --- | --- | --- | --- | --- | --- |\n| C-001 | Product Agent | Hermes | Confirm judging thesis and acceptance criteria | Product Gate evidence exists | ready |\n| C-002 | Architecture Agent | Code Review Agent | Validate required technology boundary | Reproducible spike evidence exists | ${mode === 'campaign' ? 'ready' : 'in_progress'} |\n| C-003 | Operator Agent | Human owner | Close registration and terms gate | Account-bound decision recorded | ${registrationTermsClosed ? 'done' : 'blocked'} |\n`;
+  const checked = (complete) => complete ? 'x' : ' ';
+  const checklist = `# Submission Checklist\n\n- [${checked(decision.human_gates.participation === 'approved')}] Human Gate A participation approval\n- [${checked(registrationTermsClosed)}] Registration and terms completed by authorized human\n- [ ] Rules snapshot refreshed\n- [ ] Pre-existing work disclosure reviewed\n- [ ] Working application URL verified\n- [ ] Repository access and README verified\n- [ ] Demo video under event limit\n- [ ] Provider/model disclosures complete\n- [ ] E2E and fallback demo evidence complete\n- [${checked(decision.human_gates.submission === 'approved')}] Human Gate B final submission approval\n- [ ] Platform confirmation captured before status becomes SUBMITTED\n`;
 
   await Promise.all([
     writeFile(join(outputDirectory, 'campaign.json'), `${JSON.stringify(metadata, null, 2)}\n`),
@@ -148,6 +173,7 @@ export async function createCampaignWorkspace(decision, outputDirectory) {
 async function main(args) {
   const decisionArg = args.find((value) => value.startsWith('--decision='));
   const outArg = args.find((value) => value.startsWith('--out='));
+  const refresh = args.includes('--refresh');
   if (!decisionArg || !outArg) {
     console.error('Usage: node scripts/create-campaign-workspace.mjs --decision=review.json --out=campaign-dir');
     process.exitCode = 2;
@@ -156,7 +182,7 @@ async function main(args) {
   try {
     const decisionPath = decisionArg.slice('--decision='.length);
     const decision = JSON.parse(await readFile(decisionPath, 'utf8'));
-    const result = await createCampaignWorkspace(decision, outArg.slice('--out='.length));
+    const result = await createCampaignWorkspace(decision, outArg.slice('--out='.length), { refresh });
     console.log(`PASS ${basename(result.output_directory)} mode=${result.mode} files=${result.files}`);
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));
