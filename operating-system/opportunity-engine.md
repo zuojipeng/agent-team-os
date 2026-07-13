@@ -160,16 +160,20 @@ Current foundation:
 - `scripts/import-official-event.mjs`
 - `scripts/discover-devpost-events.mjs`
 - `scripts/build-devpost-rule-evidence.mjs`
+- `scripts/create-campaign-workspace.mjs`
 - `tests/validate-opportunity.test.mjs`
 - `tests/import-official-event.test.mjs`
 - `tests/discover-devpost-events.test.mjs`
 - `tests/build-devpost-rule-evidence.test.mjs`
+- `tests/create-campaign-workspace.test.mjs`
 
 The validator must pass before an imported record enters hard-filter or score review.
 
 The Devpost listing adapter reads one bounded page from the official public JSON endpoint, emits a candidate index, and deduplicates canonical event roots. It does not claim that candidates are verified opportunities. The page importer remains a separate step and emits only low-confidence discovery metadata; rule verification is still a distinct adapter and gate.
 
 The Devpost rule-evidence adapter reads only an event root and its `/rules` page. It captures machine-readable event facts and bounded official section excerpts into a review draft. The adapter never marks the opportunity verified: Opportunity Scout and Operator review are required before canonical fields, hard filters, or confidence can be upgraded.
+
+The campaign workspace generator consumes a producer/reviewer decision record. Unresolved critical fields or a pending participation gate produce an `evaluation` workspace only. A `campaign` workspace requires every critical review to be accepted and Human Gate A participation approval; registration, terms, spend, publication, and submission remain constrained by the embedded authorization envelope.
 
 ### M3: Campaign Workspace Generator
 

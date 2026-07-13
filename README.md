@@ -78,6 +78,16 @@ node scripts/build-devpost-rule-evidence.mjs --url=https://event.devpost.com/
 
 This command preserves official excerpts and machine-readable event facts, but it deliberately leaves opportunity verification and participation approval unresolved.
 
+Generate a guarded evaluation or campaign workspace from a reviewed decision:
+
+```bash
+node scripts/create-campaign-workspace.mjs \
+  --decision=examples/opportunities/backblaze-review-decision.json \
+  --out=/tmp/backblaze-campaign
+```
+
+Unresolved critical fields or a pending participation gate always produce `evaluation` mode. Only fully accepted critical evidence plus Human Gate A approval can produce `campaign` mode.
+
 The importer does not verify rules or authorize participation. It keeps unknown fields unresolved for Scout and human review.
 
 The default rule is: choose the lightest process that still produces enough evidence for Hermes to decide `SHIP`, `CONTINUE`, `ROLLBACK`, or `ESCALATE`.

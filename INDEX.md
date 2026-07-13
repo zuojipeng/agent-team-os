@@ -107,3 +107,4 @@
 - `scripts/import-official-event.mjs`
 - `scripts/discover-devpost-events.mjs`
 - `scripts/build-devpost-rule-evidence.mjs`
+- `scripts/create-campaign-workspace.mjs`
